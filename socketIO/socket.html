@@ -1,0 +1,16 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+
+
+<script>
+    const socket = io('http://localhost:8000')
+    console.log(socket)
+
+    socket.on('connect', (data) => {
+        console.log("connect", data)
+    })
+    socket.on("data", (message) => {
+        console.log("Data event: ", message)
+    })
+    
+    socket.emit('message', "from client side")
+</script>
