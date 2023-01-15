@@ -1,0 +1,18 @@
+<h1>Testing from chat.html</h1>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io("http://localhost:9000");
+    socket.on("messageFromServer", (dataFromServer) => {
+        console.log(dataFromServer);
+        socket.emit("messageToServer", "This from client");
+    });
+
+    socket.on('ping', () => {
+        console.log("Ping was received from server");
+    });
+    socket.on('pong', (latency) => {
+        console.log(latency);
+        console.log("Pong was sent to server");
+    });
+</script>
